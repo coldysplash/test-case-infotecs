@@ -12,3 +12,17 @@ target_include_directories(
     PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}
 )
+
+add_executable(
+  parser.test
+  common/parser.test.cpp
+)
+
+target_link_libraries(
+  parser.test
+  GTest::gtest_main
+  parser
+)
+
+include(GoogleTest)
+gtest_discover_tests(parser.test)
