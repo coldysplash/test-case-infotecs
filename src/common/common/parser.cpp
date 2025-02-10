@@ -22,7 +22,7 @@ void modify_str(std::string &str) {
 }
 
 std::string total_sum_of_nums(const std::string &str) {
-  int sum = 0;
+  std::size_t sum = 0;
   for (const auto &ch : str) {
     if (isdigit(ch) == 1) {
       sum += ch - '0';

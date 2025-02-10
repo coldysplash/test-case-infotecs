@@ -30,6 +30,7 @@ Checks: >
   -hicpp-no-array-decay,
   -hicpp-avoid-c-arrays,
   -readability-convert-member-functions-to-static,
+  -misc-include-cleaner
 WarningsAsErrors: '*'
 HeaderFilterRegex: 'src/()'
 CheckOptions:
