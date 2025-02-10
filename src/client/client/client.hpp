@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace client {
 
 bool check_text(const std::string &input);
