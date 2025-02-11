@@ -17,4 +17,19 @@ public:
   void send_to_server(const std::string &message) const noexcept;
 };
 
+class SharedBuffer {
+private:
+  std::string buffer_;
+  pthread_mutex_t lock_ = PTHREAD_MUTEX_INITIALIZER;
+  pthread_cond_t cond_ = PTHREAD_COND_INITIALIZER;
+
+  bool buff_ready_ = false;
+
+public:
+  SharedBuffer() = default;
+  std::string get_buff() noexcept;
+  void set_buff(std::string buff) noexcept;
+  void clear() noexcept { buffer_.clear(); }
+};
+
 } // namespace client

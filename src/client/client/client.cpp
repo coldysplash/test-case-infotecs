@@ -56,4 +56,22 @@ void Client::send_to_server(const std::string &message) const noexcept {
   send(socket_, message.c_str(), message.size(), 0);
 }
 
+void SharedBuffer::set_buff(std::string buff) noexcept {
+  pthread_mutex_lock(&lock_);
+  buffer_ = std::move(buff);
+  buff_ready_ = true;
+  pthread_cond_signal(&cond_);
+  pthread_mutex_unlock(&lock_);
+}
+
+std::string SharedBuffer::get_buff() noexcept {
+  pthread_mutex_lock(&lock_);
+  while (!buff_ready_) {
+    pthread_cond_wait(&cond_, &lock_);
+  }
+  buff_ready_ = false;
+  pthread_mutex_unlock(&lock_);
+  return buffer_;
+}
+
 } // namespace client
