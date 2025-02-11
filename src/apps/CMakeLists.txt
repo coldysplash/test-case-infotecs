@@ -19,12 +19,12 @@ target_link_libraries(
 
 #server_app
 add_executable(server_app)
-set_compile_options(client_app)
+set_compile_options(server_app)
 
 target_sources(
   server_app
   PRIVATE
-    apps/client_app.cpp
+    apps/server_app.cpp
 )
 
 target_link_libraries(
