@@ -1,10 +1,17 @@
 # test-case-infotecs
 
-Generate and bulding project using presets:
+## Installation 
+1.Update git submodules:
+
+      git submodule init
+      git submodule update
+
+2.Generate and bulding project using presets:
 
       cmake --preset release
       cmake --build --preset release
 
+## Usage
 Start the server and client
 
       ./build/release/bin/server_app
